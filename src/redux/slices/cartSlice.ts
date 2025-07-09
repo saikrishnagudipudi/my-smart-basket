@@ -23,7 +23,7 @@ const cartSlice = createSlice({
     addToCart: (state, action: PayloadAction<CartItem>) => {
       const item = action.payload;
       const exists = state.cartItems.find(i => i.id === item.id);
-      if (exists) {
+      if (exists?.qty) {
         exists.qty += 1;
       } else {
         state.cartItems.push({ ...item, qty: 1 });
@@ -32,7 +32,7 @@ const cartSlice = createSlice({
     removeFromCart: (state, action: PayloadAction<number>) => {
       const id = action.payload;
       const exists = state.cartItems.find(i => i.id === id);
-      if (exists && exists.qty > 1) {
+      if (exists && exists.qty && exists.qty > 1) {
         exists.qty -= 1;
       } else {
         state.cartItems = state.cartItems.filter(p => p.id !== id);

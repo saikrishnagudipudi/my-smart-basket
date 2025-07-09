@@ -55,7 +55,7 @@ export default function ProductDetailScreen({ route }: Props) {
 
         <View style={styles.priceRow}>
           <Text style={styles.price}>{`₹${product.price}`}</Text>
-          <Text style={styles.strike}>{`₹${product.originalPrice}` ?? ''}</Text>
+          <Text style={styles.strike}>{`₹${product.originalPrice ?? ""}`}</Text>
         </View>
 
         {!isInCart ? (
